@@ -9,4 +9,12 @@ defmodule RumWeb.Endpoint do
     |> Plug.Conn.put_resp_header("content-type", "text/html")
     |> Plug.Conn.send_resp()
   end
+
+  # Poor man's livereload
+  def restart_server() do
+    Application.stop(:rum)
+    Application.stop(:phoenix)
+    Application.put_env(:phoenix, :serve_endpoints, true, persistent: true)
+    Application.ensure_all_started(:rum)
+  end
 end
