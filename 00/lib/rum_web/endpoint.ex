@@ -1,7 +1,7 @@
 defmodule RumWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :rum
 
-  plug :hello_web
+  plug(:hello_web)
 
   def hello_web(conn, _opts) do
     conn
